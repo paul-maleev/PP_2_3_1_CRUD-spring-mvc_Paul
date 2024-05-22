@@ -4,15 +4,21 @@
       layout:decorate="~{layout}">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Практическая задача 2.3.1 Java pre-project. Задача 2.3.1. Spring MVC + Hibernate.</title>
 </head>
 <body>
-
-<div>
-    <h1>Практическая задача 2.2.2 Java pre-project. Задача 2.2.2. MVC-приложение.</h1>
-    <th:block th:each="msg : ${messages}">
-        <h1 th:text="${msg}"></h1>
-    </th:block>
+<h1>Практическая задача 2.3.1 Java pre-project. Задача 2.3.1. Spring MVC + Hibernate.</h1>
+<a href="new">Create new user</a>
+<div th:each="user : ${users}">
+    <a th:href="@{/show(id=${user.getId()})}"
+       th:text="${user.getName() + ', ' + user.getAge()+', '+user.getEmail()}">user</a>
 </div>
+
+<br/>
+<hr/>
+
+
+
+
 </body>
 </html>
