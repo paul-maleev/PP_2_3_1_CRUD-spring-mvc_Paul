@@ -28,7 +28,6 @@ public class UserController {
     @GetMapping()
     public String index(Model model) {
         model.addAttribute("users", userService.listUsers());
-        System.out.println(" userService.listUsers()  ");
         return "index";
     }
 
@@ -45,8 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute("user") @Valid User user,
-                         BindingResult bindingResult) {
+    public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "index";
         }
@@ -61,13 +59,12 @@ public class UserController {
     }
 
     @PostMapping("/edit")
-    public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
-                         @RequestParam("id") int id) {
+    public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @RequestParam("id") int id) {
         if (bindingResult.hasErrors()) {
             return "edit";
         }
         userService.updateUser(user);
-        return "redirect:/edit?id=" + id;
+        return "redirect:/show?id=" + id;
     }
 
     @PostMapping("/delete")

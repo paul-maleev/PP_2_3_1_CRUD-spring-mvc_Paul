@@ -17,6 +17,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 import java.util.Properties;
+
 @Configuration
 @PropertySource("classpath:hibernate.properties")
 @EnableTransactionManagement
@@ -61,11 +62,7 @@ public class DataConfig {
 
     @Bean
     public EntityManager entityManager(@NotNull EntityManagerFactory factory) {
-        System.out.println("factory.createEntityManager();");
         EntityManager foo = factory.createEntityManager();
-        if(foo==null) {
-            System.out.println("NULL!!!!");
-        }
         return foo;
     }
 

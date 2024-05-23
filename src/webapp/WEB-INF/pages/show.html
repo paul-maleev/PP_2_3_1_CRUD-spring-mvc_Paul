@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
 </head>
 <body>
 <div>
-  <p th:text="${user.getName() + ', ' + user.getAge()}">VALUE</p>
-  <p th:text="${'Email: ' + user.getEmail()}">VALUE</p>
-  <p th:text="${user.getId()}">VALUE</p>
-
-  <a th:href="@{/edit(id=${user.getId()})}">Edit</a>
-
-  <form th:method="POST" th:action="@{/delete(id=${user.getId()})}">
-    <input type="submit" value="Delete"/>
+  <table border="1">
+    <tr><td>ID</td><td th:text="${user.getId()}"></td></tr>
+    <tr><td>Имя</td><td th:text="${user.getFirstName()}"></td></tr>
+    <tr><td>Фамилия</td><td th:text="${user.getLastName()}"></td></tr>
+    <tr><td>Возраст</td><td th:text="${user.getAge()}"></td></tr>
+    <tr><td>E-mail</td><td th:text="${user.getEmail()}"></td></tr>
+  </table>
+  <a th:href="@{/edit(id=${user.getId()})}">Редактировать</a>
+  <form th:method="POST" text="Удалить" th:action="@{/delete(id=${user.getId()})}">
+    <input type="submit" onclick="return confirm('Вы действительно хотите удалить этого пользователя!?')" value="Delete"/>
   </form>
+  <a th:href="@{/}">На главную</a>
+
 </div>
 </body>
 </html>

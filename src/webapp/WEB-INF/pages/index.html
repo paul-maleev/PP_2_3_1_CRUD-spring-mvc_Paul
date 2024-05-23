@@ -1,18 +1,37 @@
 <!DOCTYPE html>
-<html lang="ru"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Практическая задача 2.3.1 Java pre-project. Задача 2.3.1. Spring MVC + Hibernate.</title>
 </head>
 <body>
 <h1>Практическая задача 2.3.1 Java pre-project. Задача 2.3.1. Spring MVC + Hibernate.</h1>
-<a href="new">Create new user</a>
-<div th:each="user : ${users}">
-    <a th:href="@{/show(id=${user.getId()})}"
-       th:text="${user.getName() + ', ' + user.getAge()+', '+user.getEmail()}">user</a>
-</div>
+<a href="new">Создать нового пользователя</a>
+<p>
+<tbody>
+<table class="table" border="1">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Возраст</th>
+        <th scope="col">E-mail</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user:${users}">
+        <td><a th:href="@{/show(id=${user.getId()})}" th:text="${user.getId()}"></a></td>
+        <td><a th:href="@{/show(id=${user.getId()})}" th:text="${user.getFirstName()}"></a></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.getEmail}"></td>
+    </tr>
+    </tbody>
+</table>
 
 <br/>
 <hr/>

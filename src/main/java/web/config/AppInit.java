@@ -3,7 +3,7 @@ package web.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 
-public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer  {
 
     // Метод, указывающий на класс конфигурации
     @Override
@@ -15,7 +15,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
     // Добавление конфигурации, в которой инициализируем ViewResolver, для корректного отображения jsp.
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class<?>[]{ WebConfig.class, DataConfig.class};
+        return new Class<?>[]{WebConfig.class, DataConfig.class};
     }
 
 
