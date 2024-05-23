@@ -22,6 +22,7 @@ public class UserServiceImp implements UserService {
         userDao.save(user);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public User getUser(int id) {
         return userDao.show(id);

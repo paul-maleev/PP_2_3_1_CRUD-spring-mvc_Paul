@@ -1,6 +1,5 @@
 package web.controller;
 
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +15,6 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
-@ComponentScan(basePackages = {"web.model"})
 public class UserController {
 
     private final UserService userService;
